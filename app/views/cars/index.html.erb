@@ -1,0 +1,30 @@
+<h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+
+<h1 class="text-center">X-cars list</h1>
+<!--
+<div class="text-center padded">
+  <%#= link_to "Create a cocktail", new_cocktail_path, class: "btn btn-primary" %>
+</div>
+ -->
+<div class="container">
+  <div class="row">
+    <% @cars.each do |car| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card text-center">
+
+          <% if car.picture %>
+            <div class="card-header" style="background-image: url('<%= image_path car.picture%>')">
+            </div>
+          <% else %>
+            <div class="card-header" style="background-image: url('https://s-media-cache-ak0.pinimg.com/736x/b0/60/7a/b0607ac790b5460db4566fce20caf802.jpg')">
+            </div>
+          <% end %>
+          <div class="card-body">
+            <%= link_to car.name, car_path(car) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'cars#index'
-  resouces do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: 'car#index'
+  resources: cars
+  # test xxxx
 end
