@@ -1,13 +1,14 @@
 /* Main class */
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: #333333;
+  background: #24292e;
   transition: all 0.3s ease;
   display: flex;
   height: 70px;
   padding: 0px 30px;
   align-items: center;
   justify-content: space-between;
+  color: #7b7e81;
 }
 
 /* Optional class to fix the navbar on top */
@@ -40,11 +41,11 @@
 
 /* Navbar standard link */
 .navbar-wagon-link {
-  color: #616668;
+  color: #d8d9da;
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: #FFFFFF;
   text-decoration: none;
 }
 
@@ -94,6 +95,8 @@
   padding: 0 10px;
   font-size: 14px;
   outline: none;
+  background: #565d63;
+
 }
 .navbar-wagon-search-input:focus  {
   border: 1px solid #CCCCCC;
