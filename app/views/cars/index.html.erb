@@ -9,20 +9,20 @@
  -->
 <div class="container">
   <div class="row">
+
     <% @cars.each do |car| %>
       <div class="col-xs-12 col-sm-4">
-        <div class="card text-center">
-
-          <% if car.picture %>
-            <div class="card-header" style="background-image: url('<%= image_path car.picture%>')">
-            </div>
-          <% else %>
-            <div class="card-header" style="background-image: url('https://s-media-cache-ak0.pinimg.com/736x/b0/60/7a/b0607ac790b5460db4566fce20caf802.jpg')">
-            </div>
-          <% end %>
-          <div class="card-body">
-            <%= link_to car.name, car_path(car) %>
+        <% if car.photo %>
+          <div class="card text-center" style="height: 300px; width 400px; background-image: url('<%= cl_image_path  car.photo, height: 300, width: 400, crop: :fill %>')">
+            <div class="card-header"></div>
+        <% else %>
+          <div class="card text-center" style="background-image: url('https://s-media-cache-ak0.pinimg.com/736x/b0/60/7a/b0607ac790b5460db4566fce20caf802.jpg')">
           </div>
+            <div class="card-header"></div>
+        <% end %>
+        <div class="card-body">
+          <%= link_to car.name, car_path(car) %>
+        </div>
         </div>
       </div>
     <% end %>
