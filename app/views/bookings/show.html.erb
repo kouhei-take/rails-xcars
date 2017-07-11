@@ -1,11 +1,6 @@
 <h1 class="text-center"><%= @car.name %></h1>
-<p>Find me in app/views/cars/show.html.erb</p>
+<p>Find me in app/views/bookings/show.html.erb</p>
 
-<!--
-<div class="text-center padded">
-  <%#= link_to "Create a cocktail", new_cocktail_path, class: "btn btn-primary" %>
-</div>
- -->
 <div class="container">
     <% if @car.photo %>
     <%= cl_image_tag @car.photo, height: 300, width: 400, crop: :fill %>
@@ -20,5 +15,12 @@
       <li><%= @car.transmission %></li>
       <li><%= @car.price %></li>
     </ul>
-    <div class="pull-right"><%= link_to 'Book this car!!', new_car_booking_path(@car.id) %></div>
+
+    <h2>Your Booking Information</h2>
+    <ul>
+      <li>start_date = <%= @booking.start_date %></li>
+      <li>end_date = <%= @booking.end_date %></li>
+    </ul>
+
+    <div class="pull-right"><%= link_to 'Edit your booking!', "#" %></div>
 </div>
