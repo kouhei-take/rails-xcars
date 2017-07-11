@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # get 'bookings/index'
+  get 'bookings/index'
   # get 'bookings/new'
   # get 'bookings/create'
   # get 'bookings/edit'
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root to: 'cars#index'
   resources  :cars
   resources :cars do
-    resources :bookings
+    resources :bookings 
   end
   # test xxxx
 end
