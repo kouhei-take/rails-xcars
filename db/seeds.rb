@@ -8,7 +8,7 @@
 
 photo1 = "http://res.cloudinary.com/chikarao/a-team-van_iecmv0"
 photo2 = "http://res.cloudinary.com/chikarao/miura_rmyj9b"
-photo3 = "http://res.cloudinary.com/chikarao/a-team-van_iecmv0"
+photo3 = "http://res.cloudinary.com/chikarao/lambo-yamato_ygxp94"
 photo4 = "http://res.cloudinary.com/chikarao/landcruiser_kp33a4"
 photo5 = "http://res.cloudinary.com/chikarao/cobra_nr2qgq"
 
