@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   # get 'bookings/edit'
   # get 'bookings/destroy'
   # get 'cars/index'
+  devise_for :users,
+  controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  devise_for :users
   root to: 'cars#index'
   resources  :cars
   resources :cars do
