@@ -1,7 +1,6 @@
 <h1 class="text-center"><%= @car.name %></h1>
 <p>Find me in app/views/bookings/show.html.erb</p>
 
-<div class="container">
     <% if @car.photo %>
     <%= cl_image_tag @car.photo, height: 300, width: 400, crop: :fill %>
     <% end %>
@@ -16,11 +15,13 @@
       <li><%= @car.price %></li>
     </ul>
 
-    <h2>Your Booking Information</h2>
-    <ul>
-      <li>start_date = <%= @booking.start_date %></li>
-      <li>end_date = <%= @booking.end_date %></li>
-    </ul>
+    <% if @booking.user == current_user %>
+      <h2>Your Booking Information</h2>
+      <ul>
+        <li>start_date = <%= @booking.start_date %></li>
+        <li>end_date = <%= @booking.end_date %></li>
+      </ul>
+      <div class="pull-right"><%= link_to 'Your Boooking List', bookings_index_path %></div>
+    <% end %>
 
-    <div class="pull-right"><%= link_to 'Edit your booking!', "#" %></div>
 </div>
