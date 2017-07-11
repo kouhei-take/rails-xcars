@@ -1,7 +1,7 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<h1 class="text-center">X-cars list</h1>
+<h1 class="text-center">X-cars</h1>
 <!--
 <div class="text-center padded">
   <%#= link_to "Create a cocktail", new_cocktail_path, class: "btn btn-primary" %>
@@ -11,20 +11,34 @@
   <div class="row">
 
     <% @cars.each do |car| %>
-      <div class="col-xs-12 col-sm-4">
-        <% if car.photo %>
-          <div class="card text-center" style="height: 300px; width 400px; background-image: url('<%= cl_image_path  car.photo, height: 300, width: 400, crop: :fill %>')">
-            <div class="card-header"></div>
-        <% else %>
-          <div class="card text-center" style="background-image: url('https://s-media-cache-ak0.pinimg.com/736x/b0/60/7a/b0607ac790b5460db4566fce20caf802.jpg')">
+
+        <div class="col-xs-12 col-sm-4">
+          <%= link_to car_path(car) do %>
+            <div class="card-body">
+
+              <% if car.photo %>
+                <div class="card text-center" style="height: 300px; width: 300px; background-image: url('<%= cl_image_path  car.photo, height: 300, width: 300, crop: :pad %>')"></div>
+
+              <% else %>
+
+                <div class="card text-center" style="background-image: url('https://s-media-cache-ak0.pinimg.com/736x/b0/60/7a/b0607ac790b5460db4566fce20caf802.jpg')">
+                </div>
+
+              <% end %>
+              <% car_description = "#{car.year} #{car.make} #{car.model}" %>
+
+             <div class="card-footer"><% car.price %>
+               <ul class="list-inline">
+                 <li><%= car_description %></li>
+                 <li><% car.price %></li>
+               </ul>
+
+             </div>
+
           </div>
-            <div class="card-header"></div>
-        <% end %>
-        <div class="card-body">
-          <%= link_to car.name, car_path(car) %>
+            <% end %>
         </div>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+
+    </div>
   </div>
-</div>
