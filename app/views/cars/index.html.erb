@@ -15,8 +15,8 @@
             <% end %>
 
             <% car_description = "#{car.year} #{car.make} #{car.model}" %>
-            <% currency = "€" %>
-            <% price = "#{currency}#{car.price.to_i}" %>
+            <% @currency = "€" %>
+            <% price = "#{@currency}#{car.price.to_i}" %>
             <% star = "👍 "  %>
 
             <div class="card-footer">
