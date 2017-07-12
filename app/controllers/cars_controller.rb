@@ -1,13 +1,7 @@
 class CarsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if params[:search_text]
-      @cars = Car.where("lower(name) LIKE lower(?) OR lower(model) LIKE lower(?)", "%#{params[:search_text]}%", "%#{params[:search_text]}%")
-      else
-      @cars = Car.all
-    end
-
+    @cars = Car.all
   end
 
   def show
@@ -21,8 +15,23 @@ class CarsController < ApplicationController
   end
 
   def new
+    @car = Car.new
   end
 
   def create
+    @car = Car.new(strong_params)
+    @car.user = current_user
+
+    if @car.save
+      redirect_to user_cars_path(current_user.id)
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def strong_params
+    params.require(:car).permit(:name, :make, :year, :color, :seats, :location, :transmission, :price, :photo, :photo_cache)
   end
 end
