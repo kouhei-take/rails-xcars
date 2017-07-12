@@ -1,0 +1,38 @@
+.card-picture {
+  height: 300px;
+  background-size: cover !important;
+  padding: 0;
+  background-position: center;
+}
+
+.card-picture:hover {
+  opacity: 0.8;
+}
+
+.card-body {
+  height: 400px;
+  background-size: cover !important;
+  padding: 20px;
+  background-color: white;
+  margin-bottom: 10px;
+  box-shadow: 1px 1px 2px #B3B3B3;
+}
+
+.card-footer {
+  // padding: 10px;
+}
+
+ul {
+
+padding: 10px;
+color: black;
+font-size: 15px;
+}
+
+.price {
+font-size: 20px;
+}
+
+.rating{
+  font-size: 15px;
+}
