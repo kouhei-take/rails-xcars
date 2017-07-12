@@ -23,7 +23,7 @@
     <!-- Text link -->
     <!-- <a href="" class="navbar-wagon-item navbar-wagon-link">Manage Listings</a> -->
     <% if user_signed_in? %>
-      <%= link_to "Manage Listings", user_cars_path(current_user.id), { class: "navbar-wagon-item navbar-wagon-link" } %>
+      <%= link_to "Manage Listings", users_cars_path, { class: "navbar-wagon-item navbar-wagon-link" } %>
     <% end %>
 
 

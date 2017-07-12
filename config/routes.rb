@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :bookings
   end
 
-  resources :users do
+  namespace :users do
     resources :cars, only: [:index]
   end
   # test xxxx
