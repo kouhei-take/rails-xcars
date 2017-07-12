@@ -21,6 +21,13 @@
               <li><%= "Total:         #{@car.price.to_i * (@booking.end_date - @booking.start_date).to_i }"  %></li>
             </ul>
           <div class="pull-right booking-link"><%= link_to 'Your Boooking List', bookings_index_path %></div>
+
+<!-- From Here: [07/12 Evening] Kouhei Changed this part. Implemented buttons for Delete -->
+            <%= simple_form_for [@car] do |f| %>
+              <%= f.submit "Delete this booking!", class: "btn btn-danger", method: :destory %>
+            <% end %>
+<!-- To Here: [07/12 Evening] Kouhei Changed this part. Implemented buttons for Delete -->
+
         <% end %>
       </div>
     </div>

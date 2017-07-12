@@ -1,21 +1,19 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.where("user_id = ?", current_user.id)
-    #bookings = current_user.bookings
-    #@cars = Car.joins(bookings: :user).where(user: {id: current_user.id})
+    @bookings = current_user.bookings
+    #This means @bookings = Booking.where("user_id = ?", current_user.id)
 
-    ## @cars = @bookings.map(&:car)
-    ##########################################
-    # @cars = @bookings.map do |booking|
-    #   booking.car
-    # end
-    ##########################################
-    @cars = []
-    ##############################################
-    @bookings.each do |b|
-      @cars << Car.where('id = ?', b.car_id).first
-    end
-    ##############################################
+    @cars = Car.includes(:bookings).where(bookings: {user_id: current_user.id})
+    #There are some other ways to implement the above. I left memo.
+    # 1st one(tricky): @cars = @bookings.map(&:car)
+    # 2nd one: @cars = []
+    #          @cars = @bookings.map do |booking|
+    #            booking.car
+    #          end
+    # 3rd one: @cars = []
+    #          @bookings.each do |b|
+    #            @cars << Car.where('id = ?', b.car_id).first
+    #          end
   end
 
   def new
@@ -47,11 +45,14 @@ class BookingsController < ApplicationController
     end
   end
 
-  def edit
+
+  def update
   end
 
-  def destroy
+  #ToDo: Implement delete action
+  def delete
   end
+
 
   private
 

@@ -15,13 +15,27 @@
       </div>
     </div>
 
+
+<!-- From Here: [07/12 Evening] Kouhei Changed this part. Implemented buttons for Owner -->
+    <% if user_signed_in? && current_user == @car.user %>
     <div class="col-xs-12 col-sm-9 col-md-8">
-      <%= simple_form_for [@car, @booking] do |f| %>
-        <%= f.input :start_date %>
-        <%= f.input :end_date %>
-        <%= f.input :car_id, :as => :hidden, :input_html => { :value => @car.id }  %>
-        <%= f.submit "Book this car!", class: "btn btn-primary", method: :post %>
+      <h2>You are owner of this car!</h2>
+      <%= simple_form_for [@car] do |f| %>
+        <%= f.submit "Edit this car!", class: "btn btn-info", method: :put %>
+        <%= f.submit "Delete this car!", class: "btn btn-danger", method: :destory %>
       <% end %>
+
+    <% else %>
+      <div class="col-xs-12 col-sm-9 col-md-8">
+        <%= simple_form_for [@car, @booking] do |f| %>
+          <%= f.input :start_date %>
+          <%= f.input :end_date %>
+          <%= f.input :car_id, :as => :hidden, :input_html => { :value => @car.id }  %>
+          <%= f.submit "Book this car!", class: "btn btn-primary", method: :post %>
+        <% end %>
+    <% end %>
+<!-- To Here: [07/12 Evening] Kouhei Changed this part Implemented buttons for Owner -->
+
 
     </div>
   </div>
@@ -61,5 +75,4 @@
                 <% end %>
     <!-- google map -->
 
-    <div class="pull-right"><%= link_to 'Book this car!!', new_car_booking_path(@car.id) %></div>
 </div>

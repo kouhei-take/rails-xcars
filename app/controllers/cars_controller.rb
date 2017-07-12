@@ -35,6 +35,15 @@ class CarsController < ApplicationController
     end
   end
 
+  #Todo Edit Here to implement Car Information Edit!
+  def update
+  end
+
+  #Todo Edit Here to implement Car Information Destroy!
+  def delete
+  end
+  
+
   private
 
   def strong_params
