@@ -2,14 +2,14 @@
 <p>Find me in app/views/bookings/index.html.erb</p>
 <p>path = /bookings/</p>
 <p>only display your bookings info</p>
+<p>still working now 0711</p>
 
 
 <div class="container">
   <div class="row">
     <% @cars.each do |car| %>
         <div class="col-xs-12 col-sm-4">
-
-          <%= link_to car_path(car) do %>
+          
             <div class="card-body">
               <% if car.photo %>
                 <div class="card text-center" style="height: 300px; width: 300px; background-image: url('<%= cl_image_path  car.photo, height: 300, width: 300, crop: :pad %>')"></div>
