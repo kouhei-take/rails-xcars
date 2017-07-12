@@ -17,10 +17,13 @@
 
     <!-- Text link -->
     <a href="" class="navbar-wagon-item navbar-wagon-link">Manage Bookings</a>
-    <!--<%# = link_to "Manage Bookings", user_cars_path(current_user.id), { :class => "navbar-wagon-item navbar-wagon-link" } #%>-->
-    
+
     <!-- Text link -->
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Manage Listings</a>
+    <!-- <a href="" class="navbar-wagon-item navbar-wagon-link">Manage Listings</a> -->
+    <% if user_signed_in? %>
+      <%= link_to "Manage Listings", user_cars_path(current_user.id), { class: "navbar-wagon-item navbar-wagon-link" } %>
+      <% end %>
+
 
     <!-- Notification link-->
  <!--    <a href="" class="navbar-wagon-item navbar-wagon-link">
