@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
   def index
-    # @bookings = Booking.where("user_id = ?", current_user.id)
-    @bookings = current_user.bookings
-    @cars = Car.joins(bookings: :user).where(user: {id: current_user.id})
+    @bookings = Booking.where("user_id = ?", current_user.id)
+    #bookings = current_user.bookings
+    #@cars = Car.joins(bookings: :user).where(user: {id: current_user.id})
 
     ## @cars = @bookings.map(&:car)
     ##########################################
@@ -10,11 +10,11 @@ class BookingsController < ApplicationController
     #   booking.car
     # end
     ##########################################
-
+    @cars = []
     ##############################################
-    # @bookings.each do |b|
-    # @cars << Car.where('id = ?', b.car_id).first
-    # end
+    @bookings.each do |b|
+      @cars << Car.where('id = ?', b.car_id).first
+    end
     ##############################################
   end
 
@@ -40,7 +40,11 @@ class BookingsController < ApplicationController
 
   def show
     @car = Car.find(params[:car_id].to_i)
-    @booking = Booking.find(params[:id].to_i)
+    if params[:id]
+      @booking = Booking.find(params[:id].to_i)
+    else
+      @booking = Booking.new
+    end
   end
 
   def edit
