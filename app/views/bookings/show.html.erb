@@ -1,34 +1,39 @@
+<h1 class="text-center"><%= @car.name %></h1>
+<h2 class="show-title">Thank you for your booking!</h2>
+
 <div class="container">
   <div class="row">
-    <h1 class="text-center"><%= @car.name %></h1>
-  </div>
+    <div class="col-xs-12 col-sm-3 col-md-4">
+     <div class="show-picture">
+        <% if @car.photo %>
+          <%= cl_image_tag @car.photo, height: 300, width: 400, crop: :fill, class: "img-responsive"%>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-4">
+        <% if @booking.user == current_user %>
+          <h2 class="booking-details">Your Booking Details</h2>
+             <ul class="booking-info">
+              <li>Pick-up Date: <%= @booking.start_date %></li>
+              <li>Drop-off Date:  <%= @booking.end_date %></li>
+              <li><%= "Price/day:         #{@currency}#{@car.price.to_i}"  %></li>
+              <li><%= "Total:         #{@car.price.to_i * (@booking.end_date - @booking.start_date).to_i }"  %></li>
+            </ul>
+          <div class="pull-right booking-link"><%= link_to 'Your Boooking List', bookings_index_path %></div>
+        <% end %>
+      </div>
+    </div>
+
   <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <% if @car.photo %>
-        <%= cl_image_tag @car.photo, height: 400, width: 400, crop: :fill, class: "img-responsive" %>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <ul>
-        <li>Name: <%= @car.make %></li>
-        <li>Model: <%= @car.model %></li>
-        <li>Year: <%= @car.year %></li>
-        <li>Color: <%= @car.color %></li>
-        <li>Seats: <%= @car.seats %></li>
-        <li>Location: <%= @car.location %></li>
-        <li>Transmission: <%= @car.transmission %></li>
-        <li>Price: $<%= @car.price %></li>
+      <ul class="show-list">
+         <li><%= "Make:          #{@car.make}" %></li>
+          <li><%= "Model:         #{@car.model}"  %></li>
+          <li><%= "Year:          #{@car.year}"  %></li>
+          <li><%= "Color:         #{@car.color}"  %></li>
+          <li><%= "Seats:         #{@car.seats}"  %></li>
+          <li><%= "Location:      #{@car.location}"  %></li>
+          <li><%= "Transmission:  #{@car.transmission}"  %></li>
       </ul>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <% if @booking.user == current_user %>
-        <h2>Your Booking Information</h2>
-        <ul>
-          <li>Booking Start: <%= @booking.start_date %></li>
-          <li>Booking End: <%= @booking.end_date %></li>
-        </ul>
-        <!-- <div class="pull-right"><%= link_to 'Your Boooking List', bookings_index_path %></div> -->
-      <% end %>
-    </div>
-  </div>
+   </div>
 </div>

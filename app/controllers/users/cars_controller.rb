@@ -1,4 +1,4 @@
-class CarsController < ApplicationController
+class Users::CarsController < ApplicationController
   #
   #This is for Logined User
 

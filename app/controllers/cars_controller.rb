@@ -11,6 +11,7 @@ class CarsController < ApplicationController
 
   def show
     @car = Car.find(params[:id])
+    @booking = Booking.new
 
     @hash = Gmaps4rails.build_markers(@car) do |car, marker|
       marker.lat car.latitude
@@ -28,7 +29,7 @@ class CarsController < ApplicationController
     @car.user = current_user
 
     if @car.save
-      redirect_to user_cars_path(current_user.id)
+      redirect_to users_cars_path
     else
       render :new
     end
