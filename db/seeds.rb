@@ -25,29 +25,29 @@ user4.save
 user5 = User.new(email: "dummy5@dummy.com", password:"123456")
 user5.save
 
-car = Car.new(name: "Car1", make: "GMC", model: "Vandura", year: 1983, color: "black", seats: 8, location: "1005 Beverly Glen, Bel Air", transmission: "automatic", price: 100, user_id: 1, longitude:
+car = Car.new(name: "A-Team Van", make: "GMC", model: "Vandura", year: 1983, color: "black", seats: 8, location: "1005 Beverly Glen, Bel Air", transmission: "automatic", price: 100, user_id: 1, longitude:
 34.0934113, latitude: -118.4410771)
 
 car.remote_photo_url = photo1
 car.user = user1
 car.save!
 
-car = Car.new(name: "Car2", make: "Ferrari", model: "Miura", year: 1970, color: "red", seats: 2, location: "10236 Charing Cross Rd. Bel Air", transmission: "manual", price: 200, user_id: 2, longitude: 34.076458, latitude: -118.4318042)
+car = Car.new(name: "Ferrari Miura", make: "Ferrari", model: "Miura", year: 1970, color: "red", seats: 2, location: "10236 Charing Cross Rd. Bel Air", transmission: "manual", price: 200, user_id: 2, longitude: 34.076458, latitude: -118.4318042)
 car.remote_photo_url = photo2
 car.user = user2
 car.save!
 
-car = Car.new(name: "Car3", make: "Lamborghini", model: "Diablo", year: 1983, color: "Green", seats: 8, location: "144 Monovale Dr.Bel Air", transmission: "automatic", price: 100, user_id: 3, longitude: 34.0818728, latitude: -118.4263422)
+car = Car.new(name: "Diablo", make: "Lamborghini", model: "Diablo", year: 1983, color: "Green", seats: 8, location: "144 Monovale Dr.Bel Air", transmission: "automatic", price: 100, user_id: 3, longitude: 34.0818728, latitude: -118.4263422)
 car.remote_photo_url = photo3
 car.user = user3
 car.save!
 
-car = Car.new(name: "Car4", make: "Nissan", model: "GTR", year: 2015, color: "Black", seats: 4, location: "331 Sage Lane Santa Monica", transmission: "automatic", price: 100, user_id: 4, longitude: 34.0310818, latitude: -118.5166705)
+car = Car.new(name: "Nissan GTR", make: "Nissan", model: "GTR", year: 2015, color: "Black", seats: 4, location: "331 Sage Lane Santa Monica", transmission: "automatic", price: 100, user_id: 4, longitude: 34.0310818, latitude: -118.5166705)
 car.remote_photo_url = photo4
 car.user = user4
 car.save!
 
-car = Car.new(name: "Car5", make: "Toyota", model: "Landcruiser", year: 2016, color: "Red", seats: 8, location: "K29400 Bluewater Dr. Malibu", transmission: "automatic", price: 100, user_id: 5)
+car = Car.new(name: "Lancruiser with the Works", make: "Toyota", model: "Landcruiser", year: 2016, color: "Red", seats: 8, location: "K29400 Bluewater Dr. Malibu", transmission: "automatic", price: 100, user_id: 5)
 car.remote_photo_url = photo5
 car.user = user5
 car.save!

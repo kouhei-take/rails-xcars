@@ -11,6 +11,7 @@ class CarsController < ApplicationController
 
   def show
     @car = Car.find(params[:id])
+    @booking = Booking.new
 
     @hash = Gmaps4rails.build_markers(@car) do |car, marker|
       marker.lat car.latitude
