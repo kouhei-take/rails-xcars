@@ -5,12 +5,16 @@
 
 }
 
-.show-list {
+// .show-list {
 
-list-style-type: none;
-font-size: 20px;
-width: 200px;
-padding: 15px;
+// list-style-type: none;
+// font-size: 16px;
+// width: 200px;
+// padding: 15px;
+// }
+
+.show-list {
+  margin: 0;
 }
 
 .show-list ul {
@@ -18,12 +22,94 @@ padding: 15px;
   width: 200px
 }
 
+.btn {
+  border-radius: 5px;
+}
+
+.car-picture {
+
+  border-radius: 7px;
+  margin-bottom: 10px;
+}
+
+
+.map-box {
+
+  padding: 0px;
+  margin: 20px;
+  width: 500px;
+
+}
+
+#map {
+
+  border-radius: 5px;
+}
+
+.map-container {
+
+  padding: {
+    bottom: 30px;
+    top: 15px;
+  }
+
+}
+
 .booking-info {
   list-style-type: none;
   font-size: 20px;
   width: 200px;
   padding: 15px;
+  height: 300px;
 
+}
+
+.date-section {
+
+  background-color: white;
+  padding: 10px;
+  border-radius: 7px;
+  height: 270px;
+
+}
+
+.date-section form {
+
+  position: absolute;
+  // left: 50%;
+  // height: auto;
+  right: 87px;
+  top: 38px;
+    // -webkit-transform: translateX(-50%);
+    // -moz-transform: translateX(-50%);
+    // -ms-transform: translateX(-50%);
+    // -o-transform: translateX(-50%);
+    // transform: translateX(-50%);
+}
+
+
+
+.detail-box {
+
+  background-color: white;
+  border-radius: 7px;
+  height: 270px;
+}
+
+.detail dl {
+
+  padding: {
+  top: 6px;
+  right: 5px;
+  left: 17px;
+  bottom: 0px;
+}
+}
+
+
+.detail dt {
+
+  text-align: left;
 }
 
 .booking-info ul {
@@ -48,6 +134,7 @@ padding: 15px;
   font-size:20px;
   color: black;
 }
+
 
 
 
