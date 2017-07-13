@@ -1,46 +1,72 @@
-<h1 class="text-center">X-cars</h1>
-<div class="">
-  <div class="row">
 
-    <% @cars.each do |car| %>
-
-      <div class="col-xs-12 col-sm-4 col-md-3">
-        <%= link_to car_path(car) do %>
-          <div class="card-body">
-
-            <% if car.photo.url %>
-              <div class="card-picture text-center" style="background-image: url(<%= car.photo.url %>);"></div>
-            <% else %>
-              <div class="card-picture text-center" style="background-image: url('https://s-media-cache-ak0.pinimg.com/736x/b0/60/7a/b0607ac790b5460db4566fce20caf802.jpg')"></div>
-            <% end %>
-
-            <% car_description = "#{car.year} #{car.make} #{car.model}" %>
-            <% @currency = "€" %>
-            <% price = "#{@currency}#{car.price.to_i}" %>
-            <% star = "👍 "  %>
-
-            <div class="card-footer">
-              <ul class="list-inline">
-                <li><%= car_description %></li>
-                <li class="price"><%= price %></li>
-
-              </ul>
-              <div class="share-links">
-                <a href="#" class="share-link bg-facebook">
-                  <i class="fa fa-facebook"></i>
-                </a>
-                <a href="#" class="share-link bg-twitter">
-                  <i class="fa fa-twitter"></i>
-                </a>
-                <a href="#" class="share-link bg-email">
-                  <i class="fa fa-envelope-o"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-
+<!-- BANNER -->
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path 'xcar_banner.jpg' %>');">
+  <div class="banner-content">
+    <h1>Xcars</h1>
+    <p>OWN THE EXPERIENCE, NOT THE CAR</p>
+    <a class="btn btn-primary btn-lg">BOOK IT</a>
   </div>
 </div>
+
+<!-- LINK TO ACTION -->
+<div class="container text-center padded features">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <%= image_tag "booking_icon.png" %>
+      <h2>Manage your Bookings</h2>
+      <p>some words.some words.some words.</p>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= image_tag 'renting_icon.png' %>
+      <h2>Manage your Cars</h2>
+      <p>some words.some words.some words.</p>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= image_tag "experience_icon.png" %>
+      <h2>Share Your Experience</h2>
+      <p>some words.some words.some words.</p>
+    </div>
+  </div>
+</div>
+
+<!-- AVAILABLE CARS LIST-->
+<div class="container">
+  <div class="row">
+    <% @cars.each do |car| %>
+      <div class="col-xs-12 col-sm-4 card-container">
+        <!-- insert <div class="card"> -->
+        <% if car.photo.url %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= car.photo.url %>');">
+        <% else %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://s-media-cache-ak0.pinimg.com/736x/b0/60/7a/b0607ac790b5460db4566fce20caf802.jpg');">
+        <% end %>
+
+        <% car_description = "#{car.year} #{car.make} #{car.model}" %>
+        <% @currency = "€" %>
+        <% price = "#{@currency}#{car.price.to_i}" %>
+        <% if user_signed_in? %>
+          <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+        <% end %>
+          <div class="card-category"><%= price %></div>
+          <div class="card-description">
+            <h2><%= car.name  %></h2>
+            <p><%= car_description %></p>
+          </div>
+          <img class="card-user avatar" src="<% avatar_url %>">
+          <%= link_to "",  car_path(car) , class: "card-link" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- NEWS LETTER -->
+<div class="text-center padded" id="newsletter">
+  <h2>Get news from us</h2>
+  <p>Leave us your mail and get news from us</p>
+  <form class="form-inline">
+    <input type="email" placeholder="xcars@x.car" class="form-control">
+    <input type="submit" value="Subscribe" class="btn btn-primary btn-bordered btn-bordered-primary">
+  </form>
+</div>
+
