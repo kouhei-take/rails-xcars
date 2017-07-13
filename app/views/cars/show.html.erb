@@ -7,72 +7,95 @@
  -->
 <div class="container">
   <div class="row">
+
     <div class="col-xs-12 col-sm-3 col-md-4">
       <div class="show-picture">
         <% if @car.photo %>
-          <%= cl_image_tag @car.photo, height: 300, width: 400, crop: :fill, class: "img-responsive" %>
+          <%= cl_image_tag @car.photo, height: 300, width: 400, crop: :fill, class: "img-responsive car-picture" %>
         <% end %>
       </div>
     </div>
+    <!-- end of first row element -->
 
-
-<!-- From Here: [07/12 Evening] Kouhei Changed this part. Implemented buttons for Owner -->
-    <% if user_signed_in? && current_user == @car.user %>
-    <div class="col-xs-12 col-sm-9 col-md-8">
-      <h2>You are owner of this car!</h2>
-      <%= simple_form_for [@car] do |f| %>
-        <%= f.submit "Edit this car!", class: "btn btn-info", method: :put %>
-        <%= f.submit "Delete this car!", class: "btn btn-danger", method: :destory %>
-      <% end %>
-
-    <% else %>
-      <div class="col-xs-12 col-sm-9 col-md-8">
-        <%= simple_form_for [@car, @booking] do |f| %>
-          <%= f.input :start_date %>
-          <%= f.input :end_date %>
-          <%= f.input :car_id, :as => :hidden, :input_html => { :value => @car.id }  %>
-          <%= f.submit "Book this car!", class: "btn btn-primary", method: :post %>
-        <% end %>
-    <% end %>
-<!-- To Here: [07/12 Evening] Kouhei Changed this part Implemented buttons for Owner -->
-
-
+    <div class="col-xs-12 col-sm-3 col-md-4">
+      <div class="detail-box">
+        <div class="detail">
+        <!-- <ul class="show-list">
+            <li><strong>Make: </strong> <%= @car.make %></li>
+            <li><strong>Model: </strong><%= @car.model  %></li>
+            <li><strong>Year: </strong>   <%= @car.year  %></li>
+            <li><strong>Color: </strong><%= @car.color  %></li>
+            <li><strong>Seats: </strong>  <%= @car.seats  %></li>
+            <li><strong>Location: </strong> <%= @car.location  %></li>
+            <li><strong>Transmission: </strong><%= @car.transmission  %></li>
+            <li><strong>Price/day: €</strong><%#= "#{@car.price.to_i}"  %></li>
+         </ul> -->
+            <% [:make, :model, :year, :color, :seats, :location, :transmission].each do |a| %>
+              <dl class="dl-horizontal show-list">
+                <dt><%= "#{a.to_s.capitalize}: " %></dt>
+                <dd><%= @car.send a %></dd>
+              </dl>
+            <% end %>
+            <dl class="dl-horizontal show-list">
+                <dt>Price/day: </dt>
+                <dd><%= @car.price.to_i %></dd>
+              </dl>
+        </div>
+      </div>
     </div>
+    <!-- end of second row element -->
+
+
+    <% if user_signed_in? && current_user == @car.user %>
+
+      <div class="col-xs-12 col-sm-3 col-md-4">
+        <h2>You are owner of this car!</h2>
+
+        <%= simple_form_for [@car] do |f| %>
+          <%= f.submit "Edit this car!", class: "btn btn-info", method: :put %>
+          <%= f.submit "Delete this car!", class: "btn btn-danger", method: :destory %>
+      <% end %> <!-- end of conditional first element -->
+      </div>
+    <% else %>
+
+      <div class="col-xs-12 col-sm-3 col-md-4">
+        <div class="date-section">
+          <%= simple_form_for [@car, @booking] do |f| %>
+            <%= f.input :start_date %>
+            <%= f.input :end_date %>
+            <%= f.input :car_id, :as => :hidden, :input_html => { :value => @car.id }  %>
+            <%= f.submit "Book this car!", class: "btn btn-primary", method: :post %>
+          <% end %>
+        </div>
+      </div>
+<!-- To Here: [07/12 Evening] Kouhei Changed this part Implemented buttons for Owner -->
+    <% end %>
+  <!-- end of if -->
   </div>
+  <!-- end of row -->
+
   <div class="row">
-    <ul class="show-list">
-        <li><%= "Make:          #{@car.make}" %></li>
-        <li><%= "Model:         #{@car.model}"  %></li>
-        <li><%= "Year:          #{@car.year}"  %></li>
-        <li><%= "Color:         #{@car.color}"  %></li>
-        <li><%= "Seats:         #{@car.seats}"  %></li>
-        <li><%= "Location:      #{@car.location}"  %></li>
-        <li><%= "Transmission:  #{@car.transmission}"  %></li>
-        <li><%= "Price:         #{@currency}#{@car.price.to_i}"  %></li>
-    </ul>
+    <div class="col-xs-12 map-container">
+      <div id="map" style="width: 100%; height: 400px;"></div>
+
+      <% content_for(:after_js) do %>
+        <%= javascript_tag do %>
+          $(document).ready(function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function() {
+              markers = handler.addMarkers(<%= raw @hash.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(2);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(14);
+              }
+            });
+          });
+        <% end %>
+      <% end %>
+          <!-- google map -->
+      </div>
   </div>
-</div>
-
-    <!-- google map -->
-                <div id="map" style="width: 100%; height: 600px;"></div>
-
-                <% content_for(:after_js) do %>
-                  <%= javascript_tag do %>
-                    $(document).ready(function() {
-                      var handler = Gmaps.build('Google');
-                      handler.buildMap({ internal: { id: 'map' } }, function() {
-                        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-                        handler.bounds.extendWith(markers);
-                        handler.fitMapToBounds();
-                        if (markers.length == 0) {
-                          handler.getMap().setZoom(2);
-                        } else if (markers.length == 1) {
-                          handler.getMap().setZoom(14);
-                        }
-                      });
-                    });
-                  <% end %>
-                <% end %>
-    <!-- google map -->
-
 </div>
