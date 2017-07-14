@@ -48,9 +48,18 @@ class CarsController < ApplicationController
   end
 
   # Todo Edit Here to implement Car Information Edit!
+
+  def edit
+    @car = Car.find(params[:id])
+  end
+
   def update
-
-
+    @car = Car.find(params[:id])
+    if @car.update(strong_params)
+      redirect_to users_cars_path
+    else
+      render "edit"
+    end
   end
 
   # Todo Edit Here to implement Car Information Destroy!
