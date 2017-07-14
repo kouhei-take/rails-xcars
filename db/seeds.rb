@@ -9,7 +9,7 @@
 photo1 = 'http://res.cloudinary.com/chikarao/a-team-van_iecmv0'
 photo2 = 'http://res.cloudinary.com/chikarao/miura_rmyj9b'
 photo3 = 'http://res.cloudinary.com/chikarao/lambo-yamato_ygxp94'
-photo4 = 'http://res.cloudinary.com/chikarao/landcruiser_kp33a4'
+photo4 = 'http://res.cloudinary.com/chikarao/gtr-fire_burxnu'
 photo5 = 'http://res.cloudinary.com/chikarao/cobra_nr2qgq'
 
 puts 'seed start!'
@@ -52,7 +52,11 @@ car.remote_photo_url = photo5
 car.user = user5
 car.save
 
+addresses = ["31340 Mulholland Dr. Beverly Hills", "14046 Aubrey Rd Beverly Hills", "14046 Aubrey Rd Beverly Hills", "1368 Doheny Pl. LA", "3480 Blair Drive Hollywood Hills", "2840 Seattle Dr. W/Hollywood", "2705 Glen Dower Ave Hollywood Hills", "1222 N.Kings Rd.W/Hollywood", "3674 Berry Dr. Studio City"]
+
+
 for i in 1..9 do
+  index = 0
   puts "Happy Scraping! Category #{i} Start!"
 
   html_file = open("http://xcars.co/carcategory/#{i}")
@@ -68,7 +72,10 @@ for i in 1..9 do
     car.year = element.search('.price-location').first.search('.modelcarppp')[3].text.to_i
     # car. =  element.search('.price-location').first.search('.modelcarppp')[5].text
     car.color = element.search('.price-location').first.search('.modelcarppp')[7].text
-    car.location = Faker::Address.state
+
+    car.location = addresses[index]
+    index += 1
+
     car.seats = rand(2..4)
     trans = rand(1..2)
     car.transmission = "automatic" if trans == 1

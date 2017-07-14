@@ -1,28 +1,23 @@
 <div class="container">
-
-  <h2><%= link_to "Back to Your Listings", users_cars_path,  {class: "btn btn-primary"} %></h2>
-
-  <div class="jumbutron">
-  <h1 class="text-center">Register New Car</h1>
-  </div>
-
-  <div class="contact-form">
-    <%= simple_form_for @car do |f| %>
-    <%= f.input :name %>
-    <%= f.input :make %>
-    <%= f.input :model %>
-    <%= f.input :year %>
-    <%= f.input :color %>
-    <%= f.input :seats %>
-    <%= f.input :location %>
-    <%= f.input :transmission %>
-    <%= f.input :price %>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
-    <div class="form-actions text-right">
-    <%= f.button :submit, "Register", {class:"btn-success"} %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="form-login contact-form">
+        <h1 class="text-center">Register New Car</h1>
+          <%= simple_form_for @car do |f| %>
+          <%= f.input :name %>
+          <%= f.input :make %>
+          <%= f.input :model %>
+          <%= f.input :year %>
+          <%= f.input :color %>
+          <%= f.input :seats %>
+          <%= f.input :location %>
+          <%= f.input :transmission %>
+          <%= f.input :price %>
+          <%= f.input :photo %>
+          <%= f.input :photo_cache, as: :hidden %>
+          <%= f.button :submit, "Register", {class:"btn-primary"} %>
+        <% end %>
+      </div>
     </div>
-    <% end %>
   </div>
 </div>
-

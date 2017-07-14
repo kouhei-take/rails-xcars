@@ -1,6 +1,5 @@
 
 <!-- BANNER -->
-
 <% if @searched == false %>
   <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path 'xcar_banner.jpg' %>');">
     <div class="banner-content">
@@ -62,6 +61,7 @@
 </div>
 
 <!-- NEWS LETTER -->
+<% if @searched == false %>
 <div class="text-center padded" id="newsletter">
   <h2>Get news from us</h2>
   <p>Leave us your mail and get news from us</p>
@@ -70,3 +70,4 @@
     <input type="submit" value="Subscribe" class="btn btn-primary btn-bordered btn-bordered-primary">
   </form>
 </div>
+<% end %>
