@@ -48,7 +48,10 @@ class CarsController < ApplicationController
   end
 
   # Todo Edit Here to implement Car Information Edit!
-  def update; end
+  def update
+
+
+  end
 
   # Todo Edit Here to implement Car Information Destroy!
   def destroy
