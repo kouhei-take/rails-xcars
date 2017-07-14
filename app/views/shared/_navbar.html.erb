@@ -7,28 +7,42 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
+    <form action="/" class="navbar-wagon-search date-search">
+      <label for="start_date">Date Search</label>
+      <input type="text" class="navbar-wagon-search-input datepicker" name="start_date" id="start_date" placeholder="From">
+      <input type="text" class="navbar-wagon-search-input datepicker" name="end_date" id="end_date" placeholder="To">
+      <button type="submit" class="navbar-wagon-search-btn">
+        <i class="fa fa-search fa-black"></i>
+      </button>
+    </form>
+
+    <!-- <div class="form-group">
+      <label for="start-date">Start Date</label>
+      <input type="date" class="form-control" id="datepick">
+    </div> -->
+
     <!-- Search form -->
     <form action="/" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" name="search_text" placeholder="Search Xcars">
+      <label for="search_text">Free Word</label>
+      <input type="text" class="navbar-wagon-search-input" name="search_text" id="search_text" placeholder="Area, Model, Maker">
       <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search"></i>
+        <i class="fa fa-search fa-black"></i>
       </button>
     </form>
 
     <!-- Text link -->
     <% if user_signed_in? %>
-      <%= link_to "Manage Bookings", bookings_index_path, { class: "navbar-wagon-item navbar-wagon-link" } %>
+    <%= link_to "Manage Bookings", bookings_index_path, { class: "navbar-wagon-item navbar-wagon-link" } %>
     <% end %>
 
     <!-- Text link -->
     <!-- <a href="" class="navbar-wagon-item navbar-wagon-link">Manage Listings</a> -->
     <% if user_signed_in? %>
-      <%= link_to "Manage Listings", users_cars_path, { class: "navbar-wagon-item navbar-wagon-link" } %>
+    <%= link_to "Manage Listings", users_cars_path, { class: "navbar-wagon-item navbar-wagon-link" } %>
     <% end %>
 
-
     <!-- Notification link-->
- <!--    <a href="" class="navbar-wagon-item navbar-wagon-link">
+    <!--    <a href="" class="navbar-wagon-item navbar-wagon-link">
       <div class="badge-container">
         <i class="fa fa-envelope-o"></i>
         <div class="badge badge-blue">3</div>
@@ -40,17 +54,21 @@
       <div class="dropdown">
 
         <% if user_signed_in? %>
-          <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/50x50" %>
+        <%= image_tag avatar_url, class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
         <!-- Login text link -->
-        <% else %>
-          <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <% else %>
+        <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <% end %>
         <!-- <img src="http://placehold.it/50x50" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown"> -->
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
- <!--          <li><a href="#">Profile</a></li> -->
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Log Out</a></li>
+          <!--          <li><a href="#">Profile</a></li> -->
+          <li>
+            <a href="#">Dashboard</a>
+          </li>
+          <li>
+            <a href="#">Log Out</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -64,9 +82,15 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <li>
+          <a href="#">Some mobile link</a>
+        </li>
+        <li>
+          <a href="#">Other one</a>
+        </li>
+        <li>
+          <a href="#">Other one</a>
+        </li>
       </ul>
     </div>
   </div>

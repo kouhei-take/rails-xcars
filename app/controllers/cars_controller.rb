@@ -1,11 +1,24 @@
 class CarsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     if params[:search_text]
-      @cars = Car.where('lower(name) LIKE lower(?) OR lower(model) LIKE lower(?) OR lower(make) LIKE lower(?)', "%#{params[:search_text]}%", "%#{params[:search_text]}%", "%#{params[:search_text]}%")
+      @searched = true
+      @cars = Car.where('lower(name) LIKE lower(?) OR lower(model) LIKE lower(?) OR lower(make) LIKE lower(?) OR lower(location) LIKE lower(?)', "%#{params[:search_text]}%", "%#{params[:search_text]}%", "%#{params[:search_text]}%", "%#{params[:search_text]}%")
+    elsif params[:end_date]
+      #implement
+      @searched = true
+      @cars = []
+      Car.all.each do |car|
+        if car.bookings.all? do |booking|
+             booking.end_date.to_s < params[:start_date] || booking.start_date.to_s > params[:end_date]
+           end
+           @cars << car
+        end
+      end
     else
       @cars = Car.all
+      @searched = false
     end
   end
 
@@ -34,14 +47,11 @@ class CarsController < ApplicationController
     end
   end
 
-  #Todo Edit Here to implement Car Information Edit!
-  def update
-  end
+  # Todo Edit Here to implement Car Information Edit!
+  def update; end
 
-  #Todo Edit Here to implement Car Information Destroy!
-  def delete
-  end
-
+  # Todo Edit Here to implement Car Information Destroy!
+  def delete; end
 
   private
 
