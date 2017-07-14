@@ -63,7 +63,6 @@
             <dt>Total: </dt>
             <dd><%= "€#{@car.price.to_i * (@booking.end_date - @booking.start_date).to_i }" %></dd>
           </dl>
-
         <% end %>
         </div>
       </div>
@@ -76,7 +75,9 @@
 
   <div class="action-box">
     <%= simple_form_for [@car] do |f| %>
-    <%= f.submit "Delete this booking!", class: "btn btn-danger", method: :destory %>
+    
+    <%= link_to "Cancel this Booking", car_booking_path(@booking.car_id, @booking.id), method: :delete, class: "btn btn-danger"  %>
+    
     <% end %>
   </div>
 

@@ -1,44 +1,53 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <a href="/" class="navbar-wagon-brand">
-    <%= image_tag "xcarrental2.jpg" %>
-  </a>
+  <!-- LEFT NAVIGATION  -->
+  <div class="left-side-container">
 
-  <!-- Right Navigation -->
+    <a href="/" class="navbar-wagon-brand">
+      <%= image_tag "xcarrental2.jpg" %>
+    </a>
+
+    <div class="navbar-wagon-left hidden-xs hidden-sm">
+      <!-- BOOTSTRAP FORM -->
+      <form action="/" class="form-inline navbar-wagon-search">
+        <div class="form-group navbar-wagon-search">
+          <!-- <label for="Start Date">Search by Availability</label> -->
+          <input type="text" class="form-control navbar-wagon-search-input datepicker" name="start_date" id="start_date" placeholder="Start Date">
+        </div>
+        <div class="form-group navbar-wagon-search">
+          <!-- <label for="End Date"></label> -->
+          <input type="text" class="form-control navbar-wagon-search-input datepicker" name="end_date" id="end_date" placeholder="End Date">
+        </div>
+        <div class="form-group navbar-wagon-search">
+          <!-- <label for="End Date"></label> -->
+          <input type="text" class="form-control navbar-wagon-search-input" name="search_text" id="search_text" placeholder="Area, Model, Maker">
+        </div>
+          <button type="submit" class="btn btn-warning btn-bordered btn-bordered-primary">Search by Availability</button>
+      </form>
+      </form>
+    </div>
+  </div>
+
+  <!-- RIGHT NAVIGATION -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-    <form action="/" class="navbar-wagon-search date-search">
-      <label for="start_date">Date Search</label>
-      <input type="text" class="navbar-wagon-search-input datepicker" name="start_date" id="start_date" placeholder="From">
-      <input type="text" class="navbar-wagon-search-input datepicker" name="end_date" id="end_date" placeholder="To">
-      <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search fa-black"></i>
-      </button>
-    </form>
-
-    <!-- <div class="form-group">
-      <label for="start-date">Start Date</label>
-      <input type="date" class="form-control" id="datepick">
-    </div> -->
-
     <!-- Search form -->
-    <form action="/" class="navbar-wagon-search">
-      <label for="search_text">Free Word</label>
+<!--     <form action="/" class="navbar-wagon-search">
+      <label for="search_text">Search by Keyword</label>
       <input type="text" class="navbar-wagon-search-input" name="search_text" id="search_text" placeholder="Area, Model, Maker">
       <button type="submit" class="navbar-wagon-search-btn">
         <i class="fa fa-search fa-black"></i>
       </button>
-    </form>
+    </form> -->
 
     <!-- Text link -->
     <% if user_signed_in? %>
-    <%= link_to "Manage Bookings", bookings_index_path, { class: "navbar-wagon-item navbar-wagon-link" } %>
+    <%= link_to "Manage Booking", bookings_index_path, { class: "navbar-wagon-item navbar-wagon-link" } %>
     <% end %>
 
     <!-- Text link -->
     <!-- <a href="" class="navbar-wagon-item navbar-wagon-link">Manage Listings</a> -->
     <% if user_signed_in? %>
-    <%= link_to "Manage Listings", users_cars_path, { class: "navbar-wagon-item navbar-wagon-link" } %>
+    <%= link_to "Manage Your Car", users_cars_path, { class: "navbar-wagon-item navbar-wagon-link" } %>
     <% end %>
 
     <!-- Notification link-->

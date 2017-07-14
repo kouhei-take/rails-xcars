@@ -51,10 +51,16 @@
       <div class="col-xs-12 col-sm-3 col-md-4">
         <h2>You are owner of this car!</h2>
 
-        <%= simple_form_for [@car] do |f| %>
-          <%= f.submit "Edit this car!", class: "btn btn-info", method: :put %>
-          <%= f.submit "Delete this car!", class: "btn btn-danger", method: :destory %>
-      <% end %> <!-- end of conditional first element -->
+<!-- edit code goes in here -->
+
+         <%= link_to "Edit this Listing", edit_car_path(@car.id), class: "btn btn-info"  %>
+
+
+<!-- delete code goes in here -->
+          <%= link_to "Remove this Listing", car_path(@car.id), method: :delete, class: "btn btn-danger"  %>
+
+
+       <!-- end of conditional first element -->
       </div>
     <% else %>
 
