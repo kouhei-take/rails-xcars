@@ -50,11 +50,15 @@ class BookingsController < ApplicationController
   def update
   end
 
-  #ToDo: Implement delete action
   def destroy
     booking = Booking.find(params[:id])
-    booking.destroy
-    redirect_to bookings_index_path
+    if booking.user == current_user
+      booking.destroy
+      redirect_to bookings_index_path
+    else
+      # throw pop-up with FU message
+      redirect_to root_path
+    end
   end
 
 
