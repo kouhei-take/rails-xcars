@@ -51,7 +51,16 @@ class CarsController < ApplicationController
   def update; end
 
   # Todo Edit Here to implement Car Information Destroy!
-  def delete; end
+  def destroy
+    car = Car.find(params[:id])
+    if car.user_id == current_user.id
+      car.destroy
+      redirect_to users_cars_path
+    else
+      # throw pop-up with FU message
+      redirect_to users_cars_path
+    end
+  end
 
   private
 
