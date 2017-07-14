@@ -51,7 +51,10 @@ class BookingsController < ApplicationController
   end
 
   #ToDo: Implement delete action
-  def delete
+  def destroy
+    booking = Booking.find(params[:id])
+    booking.destroy
+    redirect_to bookings_index_path
   end
 
 
