@@ -6,7 +6,7 @@
     <div class="banner-content">
       <h1>Xcars</h1>
       <p>OWN THE EXPERIENCE, NOT THE CAR</p>
-      <a class="btn btn-primary btn-lg">BOOK IT</a>
+      <!-- <a class="btn btn-warning btn-lg">BOOK IT</a> -->
     </div>
   </div>
 
@@ -15,19 +15,19 @@
 <div class="container text-center padded features">
   <div class="row">
     <div class="col-xs-12 col-sm-4">
-      <%= image_tag "booking_icon.png" %>
-      <h2>Manage your Bookings</h2>
-      <p>some words.some words.some words.</p>
+      <%= link_to image_tag("booking_icon.png"), bookings_index_path %>
+      <h2>Manage Booking</h2>
+      <p>Request,change and cancel booking</p>
     </div>
     <div class="col-xs-12 col-sm-4">
-      <%= image_tag 'renting_icon.png' %>
+      <%= link_to image_tag("renting_icon.png"), users_cars_path %>
       <h2>Manage your Cars</h2>
-      <p>some words.some words.some words.</p>
+      <p>Become a host and rent out your car</p>
     </div>
     <div class="col-xs-12 col-sm-4">
       <%= image_tag "experience_icon.png" %>
-      <h2>Share Your Experience</h2>
-      <p>some words.some words.some words.</p>
+      <h2>Share Your Story</h2>
+      <p>Share your Xcar story here</p>
     </div>
   </div>
 </div>
@@ -48,15 +48,12 @@
         <% car_description = "#{car.year} #{car.make} #{car.model}" %>
         <% @currency = "€" %>
         <% price = "#{@currency}#{car.price.to_i}" %>
-        <% if user_signed_in? %>
-          <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-        <% end %>
           <div class="card-category"><%= price %></div>
           <div class="card-description">
             <h2><%= car.name  %></h2>
             <p><%= car_description %></p>
           </div>
-          <img class="card-user avatar" src="<% avatar_url %>">
+           <!-- <img class="card-user avatar" src="<%#= car.user.photo.url %>"> -->
           <%= link_to "",  car_path(car) , class: "card-link" %>
         </div>
       </div>
