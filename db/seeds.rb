@@ -71,8 +71,8 @@ for i in 1..9 do
     car.location = Faker::Address.state
     car.seats = rand(2..4)
     trans = rand(1..2)
-    car.transmission = automatic if trans == 1
-    car.transmission = manual if trans == 2
+    car.transmission = "automatic" if trans == 1
+    car.transmission = "manual" if trans == 2
     car.user_id = rand(1..5)
     car.price = rand(100..300)
     id = rand(6..1000)
