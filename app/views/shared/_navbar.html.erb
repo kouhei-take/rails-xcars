@@ -1,5 +1,4 @@
 <div class="navbar-wagon">
-  <!-- Logo -->
   <!-- LEFT NAVIGATION  -->
   <div class="left-side-container">
 
@@ -30,15 +29,6 @@
 
   <!-- RIGHT NAVIGATION -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <!-- Search form -->
-<!--     <form action="/" class="navbar-wagon-search">
-      <label for="search_text">Search by Keyword</label>
-      <input type="text" class="navbar-wagon-search-input" name="search_text" id="search_text" placeholder="Area, Model, Maker">
-      <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search fa-black"></i>
-      </button>
-    </form> -->
-
     <!-- Text link -->
     <% if user_signed_in? %>
     <%= link_to "Manage Booking", bookings_index_path, { class: "navbar-wagon-item navbar-wagon-link" } %>
@@ -49,14 +39,6 @@
     <% if user_signed_in? %>
     <%= link_to "Manage Your Car", users_cars_path, { class: "navbar-wagon-item navbar-wagon-link" } %>
     <% end %>
-
-    <!-- Notification link-->
-    <!--    <a href="" class="navbar-wagon-item navbar-wagon-link">
-      <div class="badge-container">
-        <i class="fa fa-envelope-o"></i>
-        <div class="badge badge-blue">3</div>
-      </div>
-    </a> -->
 
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
