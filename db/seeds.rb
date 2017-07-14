@@ -30,27 +30,27 @@ car = Car.new(name: 'A-Team Van', make: 'GMC', model: 'Vandura', year: 1983, col
 
 car.remote_photo_url = photo1
 car.user = user1
-car.save!
+car.save
 
 car = Car.new(name: 'Ferrari Miura', make: 'Ferrari', model: 'Miura', year: 1970, color: 'red', seats: 2, location: '10236 Charing Cross Rd. Bel Air', transmission: 'manual', price: 200, user_id: 2, longitude: 34.076458, latitude: -118.4318042)
 car.remote_photo_url = photo2
 car.user = user2
-car.save!
+car.save
 
 car = Car.new(name: 'Diablo', make: 'Lamborghini', model: 'Diablo', year: 1983, color: 'Green', seats: 8, location: '144 Monovale Dr.Bel Air', transmission: 'automatic', price: 100, user_id: 3, longitude: 34.0818728, latitude: -118.4263422)
 car.remote_photo_url = photo3
 car.user = user3
-car.save!
+car.save
 
 car = Car.new(name: 'Nissan GTR', make: 'Nissan', model: 'GTR', year: 2015, color: 'Black', seats: 4, location: '331 Sage Lane Santa Monica', transmission: 'automatic', price: 100, user_id: 4, longitude: 34.0310818, latitude: -118.5166705)
 car.remote_photo_url = photo4
 car.user = user4
-car.save!
+car.save
 
 car = Car.new(name: 'Lancruiser with the Works', make: 'Toyota', model: 'Landcruiser', year: 2016, color: 'Red', seats: 8, location: 'K29400 Bluewater Dr. Malibu', transmission: 'automatic', price: 100, user_id: 5)
 car.remote_photo_url = photo5
 car.user = user5
-car.save!
+car.save
 
 for i in 1..9 do
   puts "Happy Scraping! Category #{i} Start!"
@@ -68,8 +68,13 @@ for i in 1..9 do
     car.year = element.search('.price-location').first.search('.modelcarppp')[3].text.to_i
     # car. =  element.search('.price-location').first.search('.modelcarppp')[5].text
     car.color = element.search('.price-location').first.search('.modelcarppp')[7].text
-
+    car.location = Faker::Address.state
+    car.seats = rand(2..4)
+    trans = rand(1..2)
+    car.transmission = automatic if trans == 1
+    car.transmission = manual if trans == 2
     car.user_id = rand(1..5)
+    car.price = rand(100..300)
     id = rand(6..1000)
 
     if Car.exists?(id) != true
